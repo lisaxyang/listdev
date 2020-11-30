@@ -1,11 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
 
+import React, { Component } from "react";
+
 class App extends Component {
 
   constructor() {
     super();
-    const usStates = [
+    const usStatesList = [
       { name: "Rhode Island", numVotes: "4", color: "blue", region: "Northeast"},
       { name: "Maryland", numVotes: "10", color: "blue", region: "South"},
       { name: "Idaho", numVotes: "4", color: "red", region: "West"},
@@ -23,41 +25,34 @@ class App extends Component {
     };
   }
 
-  addBox = event => {
-    
-    // // // event.preventDefault();
-    // // // const newBox = ;
-    // // // const boxNumber = [...this.state.boxArray, newBox];
+  // addBox = event => {
+  //   // // // event.preventDefault();
+  //   // // // const newBox = ;
+  //   // // // const boxNumber = [...this.state.boxArray, newBox];
+  //   // this.setState({ boxNumber: this.state.boxNumber + 1 });
+  //   const newBoxArray = [...this.state.boxArray, 1];
+  //   console.log(this.state.boxArray);
+  //   this.setState({boxArray: newBoxArray});
+  // };
 
-    // this.setState({ boxNumber: this.state.boxNumber + 1 });
-    const newBoxArray = [...this.state.boxArray, 1];
-    console.log(this.state.boxArray);
-    this.setState({boxArray: newBoxArray});
-  };
-
-  renderBoxes() {
-
-    const newBoxArray = this.state.boxArray;
-    const listBoxes = newBoxArray.map(n => <GreenBox />);
-
-    return listBoxes;
-
-    // console.log(this.state.boxNumber);
-    // var boxes = [];
-    // for(let i = 0; i < this.state.boxNumber; i++) {
-    //   console.log(i);
-    //   boxes.push(<GreenBox />);
-    //   // return (<GreenBox />);
-    // }
-    // return boxes;
-
-    
-  }
+  // renderBoxes() {
+  //   const newBoxArray = this.state.boxArray;
+  //   const listBoxes = newBoxArray.map(n => <GreenBox />);
+  //   return listBoxes;
+  //   // console.log(this.state.boxNumber);
+  //   // var boxes = [];
+  //   // for(let i = 0; i < this.state.boxNumber; i++) {
+  //   //   console.log(i);
+  //   //   boxes.push(<GreenBox />);
+  //   //   // return (<GreenBox />);
+  //   // }
+  //   // return boxes;   
+  // }
 
   render() {
     return (
       <div>
-        <FilteredList list={productList} />
+        <FilteredList list={usStatesList} />
       </div>
     );
   }
