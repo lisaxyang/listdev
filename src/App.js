@@ -2,25 +2,41 @@ import logo from './logo.svg';
 import './App.css';
 
 import React, { Component } from "react";
+import FilteredList from "./FilteredList";
+
+const usStatesList = [
+  { name: "Rhode Island", numVotes: "4", color: "blue", region: "Northeast"},
+  { name: "Maryland", numVotes: "10", color: "blue", region: "South"},
+  { name: "Idaho", numVotes: "4", color: "red", region: "West"},
+  { name: "Florida", numVotes: "29", color: "swing", region: "South"},
+  { name: "Texas", numVotes: "38", color: "red", region: "South"},
+  { name: "California", numVotes: "55", color: "blue", region: "West"},
+  { name: "New York", numVotes: "29", color: "blue", region: "Northeast"},
+  { name: "Kansas", numVotes: "6", color: "red", region: "Midwest"},
+  { name: "Nebraska", numVotes: "5", color: "red", region: "Midwest"},
+  { name: "Arizona", numVotes: "11", color: "swing", region: "West"},
+  { name: "Pennsylvania", numVotes: "20", color: "swing", region: "Northeast"},
+  { name: "Minnesota", numVotes: "10", color: "swing", region: "Midwest"},
+];
 
 class App extends Component {
 
   constructor() {
     super();
-    const usStatesList = [
-      { name: "Rhode Island", numVotes: "4", color: "blue", region: "Northeast"},
-      { name: "Maryland", numVotes: "10", color: "blue", region: "South"},
-      { name: "Idaho", numVotes: "4", color: "red", region: "West"},
-      { name: "Florida", numVotes: "29", color: "swing", region: "South"},
-      { name: "Texas", numVotes: "38", color: "red", region: "South"},
-      { name: "California", numVotes: "55", color: "blue", region: "West"},
-      { name: "New York", numVotes: "29", color: "blue", region: "Northeast"},
-      { name: "Kansas", numVotes: "6", color: "red", region: "Midwest"},
-      { name: "Nebraska", numVotes: "5", color: "red", region: "Midwest"},
-      { name: "Arizona", numVotes: "11", color: "swing", region: "West"},
-      { name: "Pennsylvania", numVotes: "20", color: "swing", region: "Northeast"},
-      { name: "Minnesota", numVotes: "10", color: "swing", region: "Midwest"},
-    ];
+    // const usStatesList = [
+    //   { name: "Rhode Island", numVotes: "4", color: "blue", region: "Northeast"},
+    //   { name: "Maryland", numVotes: "10", color: "blue", region: "South"},
+    //   { name: "Idaho", numVotes: "4", color: "red", region: "West"},
+    //   { name: "Florida", numVotes: "29", color: "swing", region: "South"},
+    //   { name: "Texas", numVotes: "38", color: "red", region: "South"},
+    //   { name: "California", numVotes: "55", color: "blue", region: "West"},
+    //   { name: "New York", numVotes: "29", color: "blue", region: "Northeast"},
+    //   { name: "Kansas", numVotes: "6", color: "red", region: "Midwest"},
+    //   { name: "Nebraska", numVotes: "5", color: "red", region: "Midwest"},
+    //   { name: "Arizona", numVotes: "11", color: "swing", region: "West"},
+    //   { name: "Pennsylvania", numVotes: "20", color: "swing", region: "Northeast"},
+    //   { name: "Minnesota", numVotes: "10", color: "swing", region: "Midwest"},
+    // ];
     this.state = { 
     };
   }
