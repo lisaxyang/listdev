@@ -6,18 +6,18 @@ class App extends Component {
   constructor() {
     super();
     const usStates = [
-      { name: "Rhode Island", numVotes: "4", color: "blue", region: ""},
-      { name: "Maryland", numVotes: "10", color: "blue", region: ""},
-      { name: "Idaho", numVotes: "4", color: "red", region: ""},
-      { name: "Florida", numVotes: "29", color: "swing", region: ""},
-      { name: "Texas", numVotes: "38", color: "red", region: ""},
-      { name: "California", numVotes: "55", color: "blue", region: ""},
-      { name: "New York", numVotes: "29", color: "blue", region: ""},
-      { name: "Kansas", numVotes: "6", color: "red", region: ""},
-      { name: "Nebraska", numVotes: "5", color: "red", region: ""},
-      { name: "Arizona", numVotes: "11", color: "swing", region: ""},
-      { name: "Pennsylvania", numVotes: "20", color: "swing", region: ""},
-      { name: "Minnesota", numVotes: "10", color: "swing", region: ""},
+      { name: "Rhode Island", numVotes: "4", color: "blue", region: "Northeast"},
+      { name: "Maryland", numVotes: "10", color: "blue", region: "South"},
+      { name: "Idaho", numVotes: "4", color: "red", region: "West"},
+      { name: "Florida", numVotes: "29", color: "swing", region: "South"},
+      { name: "Texas", numVotes: "38", color: "red", region: "South"},
+      { name: "California", numVotes: "55", color: "blue", region: "West"},
+      { name: "New York", numVotes: "29", color: "blue", region: "Northeast"},
+      { name: "Kansas", numVotes: "6", color: "red", region: "Midwest"},
+      { name: "Nebraska", numVotes: "5", color: "red", region: "Midwest"},
+      { name: "Arizona", numVotes: "11", color: "swing", region: "West"},
+      { name: "Pennsylvania", numVotes: "20", color: "swing", region: "Northeast"},
+      { name: "Minnesota", numVotes: "10", color: "swing", region: "Midwest"},
     ];
     this.state = { 
     };
@@ -57,8 +57,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <MyButton addBox={this.addBox} />
-        {this.renderBoxes()}
+        <FilteredList list={productList} />
       </div>
     );
   }
