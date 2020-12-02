@@ -14,7 +14,7 @@ class FilteredList extends Component {
       color: "All",
       region: "All",
       sortCondition: "None",
-      sortedList: this.props.list,
+      // sortedList: this.props.list,
     };
   }
 
@@ -60,10 +60,11 @@ class FilteredList extends Component {
     this.setState({
       sortCondition: event
     })
+    this.sortList();
   };
 
 
-  sortList = item => {
+  sortList = () => {
     if (this.state.sortCondition === "Ascending") {
       this.setState({
         sortedList: this.props.list.sort(function(a, b) {
@@ -119,6 +120,7 @@ class FilteredList extends Component {
   
 
   render() {
+    var sortedList = this.props.list;
     return (
       // <div style={{width: "100px", height: "100px", backgroundColor: "#009d00"}}>
       //   It's a Green Box!
@@ -192,7 +194,9 @@ class FilteredList extends Component {
               </Row>
 
               <Row>
-                <DisplayList list={this.state.sortedList.filter(this.matchesFilterColorRegion)}/>
+              <DisplayList list={sortedList.filter(this.matchesFilterColorRegion)} />
+                {/* <DisplayList list={this.state.sortedList.filter(this.matchesFilterColorRegion).sort(function(a, b) {
+                  return a.numVotes - b.numVotes;} ) } /> */}
               </Row>
             </Col>
   
