@@ -13,6 +13,7 @@ class FilteredList extends Component {
     this.state = { 
       color: "All",
       region: "All",
+      sortCondition: "None",
     };
   }
 
@@ -21,38 +22,68 @@ class FilteredList extends Component {
       color: event
     })
   };
-  
-
-  matchesFilterColor = item => {
-    // all items should be shown when no filter is selected
-    if(this.state.color === "All") { 
-      return this.matchesFilterRegion;
-      return true;
-    } else if (this.state.color === item.color) {
-      return this.matchesFilterRegion;
-      return true;
-    } else {
-      return false;
-    }
-  }
 
   onSelectFilterRegion = event => {
     this.setState({
       region: event
     })
-  };
-  
+  }; 
 
-  matchesFilterRegion = item => {
+  matchesFilterColorRegion = item => {
     // all items should be shown when no filter is selected
-    if(this.state.region === "All") { 
+    if(this.state.color === "All") { 
+      if(this.state.region === "All") { 
+        return true;
+      } else if (this.state.region === item.region) {
+        return true;
+      } else {
+        return false;
+      }
       return true;
-    } else if (this.state.region === item.region) {
+    } else if (this.state.color === item.color) {
+      if(this.state.region === "All") { 
+        return true;
+      } else if (this.state.region === item.region) {
+        return true;
+      } else {
+        return false;
+      }
       return true;
     } else {
       return false;
     }
   }
+
+
+  onSelectSort = event => {
+    this.setState({
+      sortCondition: event
+    })
+  }
+
+
+  sortList = item => {
+
+  }
+  
+  sortListHighestFirst = item => {
+    
+  }
+  
+  sortListLowestFirst = item => {
+    
+  }
+
+  // matchesFilterRegion = item => {
+  //   // all items should be shown when no filter is selected
+  //   if(this.state.region === "All") { 
+  //     return true;
+  //   } else if (this.state.region === item.region) {
+  //     return true;
+  //   } else {
+  //     return false;
+  //   }
+  // }
   
 
   render() {
@@ -80,7 +111,7 @@ class FilteredList extends Component {
                   <Nav.Link eventKey="Swing" onSelect={this.onSelectFilterColor}>Swing</Nav.Link>
                 </Nav.Item>
               </Row>
-              <Row style={{backgroundColor: "pink"}}>
+              {/* <Row style={{backgroundColor: "pink"}}>
                 <Nav.Item>
                   <Nav.Link eventKey="All" onSelect={this.onSelectFilterColor}>All</Nav.Link>
                 </Nav.Item>
@@ -96,9 +127,9 @@ class FilteredList extends Component {
                 <Nav.Item>
                   <Nav.Link eventKey="West" onSelect={this.onSelectFilterColor}>West</Nav.Link>
                 </Nav.Item>
-              </Row>
+              </Row> */}
       
-              <Row style={{backgroundColor: "honeydew"}}>
+              <Row style={{backgroundColor: "pink"}}>
                 <Nav.Item>
                   <Nav.Link eventKey="All" onSelect={this.onSelectFilterRegion}>All</Nav.Link>
                 </Nav.Item>
@@ -116,8 +147,20 @@ class FilteredList extends Component {
                 </Nav.Item>
               </Row>
 
+              <Row style={{backgroundColor: "honeydew"}}>
+                <Nav.Item>
+                  <Nav.Link eventKey="None" onSelect={this.onSelectSort}>All</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                <Nav.Link eventKey="Highest" onSelect={this.onSelectSort}>Highest Votes First</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Nav.Link eventKey="Lowest" onSelect={this.onSelectSort}>Lowest Votes First</Nav.Link>
+                </Nav.Item>
+              </Row>
+
               <Row>
-                <DisplayList list={this.props.list.filter(this.matchesFilterColor)}/>
+                <DisplayList list={this.props.list.filter(this.matchesFilterColorRegion)}/>
               </Row>
             </Col>
   
