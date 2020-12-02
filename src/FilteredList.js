@@ -14,6 +14,7 @@ class FilteredList extends Component {
       color: "All",
       region: "All",
       sortCondition: "None",
+      sortedList: this.props.list,
     };
   }
 
@@ -52,27 +53,58 @@ class FilteredList extends Component {
     } else {
       return false;
     }
-  }
+  };
 
 
   onSelectSort = event => {
     this.setState({
       sortCondition: event
     })
-  }
+  };
 
 
   sortList = item => {
-
-  }
+    if (this.state.sortCondition === "Ascending") {
+      this.setState({
+        sortedList: this.props.list.sort(function(a, b) {
+          return a.numVotes - b.numVotes;
+        })
+      })
+    } 
+    else if (this.state.sortCondition === "Descending") {
+      this.setState({
+        sortedList: this.props.list.sort(function(a, b) {
+          return b.numVotes - a.numVotes;
+        })
+      })
+    }
+    else {
+      this.setState({
+        sortedList: this.props.list,
+      })
+      // this.props.list.sort(function(a, b) {
+      //   var stateA = a.name.toUpperCase(); // ignore upper and lowercase
+      //   var stateB = b.name.toUpperCase(); // ignore upper and lowercase
+      //   if (stateA < stateB) {
+      //     return -1;
+      //   }
+      //   else if (stateA > stateB) {
+      //     return 1;
+      //   }
+      
+      //   // state names are the same
+      //   return 0;
+      // })
+    }
+  };
   
-  sortListHighestFirst = item => {
+  // sortListHighestFirst = item => {
     
-  }
+  // }
   
-  sortListLowestFirst = item => {
+  // sortListLowestFirst = item => {
     
-  }
+  // }
 
   // matchesFilterRegion = item => {
   //   // all items should be shown when no filter is selected
@@ -152,15 +184,15 @@ class FilteredList extends Component {
                   <Nav.Link eventKey="None" onSelect={this.onSelectSort}>All</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                <Nav.Link eventKey="Highest" onSelect={this.onSelectSort}>Highest Votes First</Nav.Link>
+                <Nav.Link eventKey="Descending" onSelect={this.onSelectSort}>Highest Votes First</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link eventKey="Lowest" onSelect={this.onSelectSort}>Lowest Votes First</Nav.Link>
+                  <Nav.Link eventKey="Ascending" onSelect={this.onSelectSort}>Lowest Votes First</Nav.Link>
                 </Nav.Item>
               </Row>
 
               <Row>
-                <DisplayList list={this.props.list.filter(this.matchesFilterColorRegion)}/>
+                <DisplayList list={this.state.sortedList.filter(this.matchesFilterColorRegion)}/>
               </Row>
             </Col>
   
