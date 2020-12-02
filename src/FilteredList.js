@@ -60,42 +60,58 @@ class FilteredList extends Component {
     this.setState({
       sortCondition: event
     })
-    this.sortList();
+    // this.sortList();
   };
 
 
-  sortList = () => {
+  // sortList = () => {
+  //   if (this.state.sortCondition === "Ascending") {
+  //     this.setState({
+  //       sortedList: this.props.list.sort(function(a, b) {
+  //         return a.numVotes - b.numVotes;
+  //       })
+  //     })
+  //   } 
+  //   else if (this.state.sortCondition === "Descending") {
+  //     this.setState({
+  //       sortedList: this.props.list.sort(function(a, b) {
+  //         return b.numVotes - a.numVotes;
+  //       })
+  //     })
+  //   }
+  //   else {
+  //     this.setState({
+  //       sortedList: this.props.list,
+  //     })
+  //   }
+  // };
+
+  sortList = list => {
     if (this.state.sortCondition === "Ascending") {
-      this.setState({
-        sortedList: this.props.list.sort(function(a, b) {
+      return this.props.list.sort(function(a, b) {
           return a.numVotes - b.numVotes;
         })
-      })
     } 
     else if (this.state.sortCondition === "Descending") {
-      this.setState({
-        sortedList: this.props.list.sort(function(a, b) {
+      return this.props.list.sort(function(a, b) {
           return b.numVotes - a.numVotes;
         })
-      })
     }
     else {
-      this.setState({
-        sortedList: this.props.list,
-      })
-      // this.props.list.sort(function(a, b) {
-      //   var stateA = a.name.toUpperCase(); // ignore upper and lowercase
-      //   var stateB = b.name.toUpperCase(); // ignore upper and lowercase
-      //   if (stateA < stateB) {
-      //     return -1;
-      //   }
-      //   else if (stateA > stateB) {
-      //     return 1;
-      //   }
-      
-      //   // state names are the same
-      //   return 0;
-      // })
+      console.log(this.state.sortCondition);
+      return this.props.list.sort(function(a, b) {
+          var stateA = a.name.toUpperCase(); // ignore upper and lowercase
+          var stateB = b.name.toUpperCase(); // ignore upper and lowercase
+          if (stateA < stateB) {
+            return -1;
+          }
+          else if (stateA > stateB) {
+            return 1;
+          }
+        
+          // state names are the same
+          return 0;
+        })
     }
   };
   
@@ -120,7 +136,7 @@ class FilteredList extends Component {
   
 
   render() {
-    var sortedList = this.props.list;
+    // var sortedList = this.props.list;
     return (
       // <div style={{width: "100px", height: "100px", backgroundColor: "#009d00"}}>
       //   It's a Green Box!
@@ -183,7 +199,7 @@ class FilteredList extends Component {
 
               <Row style={{backgroundColor: "honeydew"}}>
                 <Nav.Item>
-                  <Nav.Link eventKey="None" onSelect={this.onSelectSort}>All</Nav.Link>
+                  <Nav.Link eventKey="None" onSelect={this.onSelectSort}>Original</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
                 <Nav.Link eventKey="Descending" onSelect={this.onSelectSort}>Highest Votes First</Nav.Link>
@@ -194,7 +210,7 @@ class FilteredList extends Component {
               </Row>
 
               <Row>
-              <DisplayList list={sortedList.filter(this.matchesFilterColorRegion)} />
+              <DisplayList list={this.sortList(this.props.list.filter(this.matchesFilterColorRegion))} />
                 {/* <DisplayList list={this.state.sortedList.filter(this.matchesFilterColorRegion).sort(function(a, b) {
                   return a.numVotes - b.numVotes;} ) } /> */}
               </Row>
