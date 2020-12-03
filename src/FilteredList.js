@@ -5,6 +5,7 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import DisplayList from "./DisplayList";
+import DisplayAggregator from "./DisplayAggregator";
 import Jumbotron from 'react-bootstrap/Jumbotron'
 
 class FilteredList extends Component {
@@ -15,6 +16,9 @@ class FilteredList extends Component {
       color: "All",
       region: "All",
       sortCondition: "None",
+      votesToAdd: [],
+      totalVotes: 0,
+      numStates: 0,
       // sortedList: this.props.list,
     };
   }
@@ -117,9 +121,59 @@ class FilteredList extends Component {
     }
   };
 
-  addMyState = item => {
+  aggregatorFilter = item => {
+    // all items should be shown when no filter is selected
+    if(this.state.votesToAdd.includes(item.name)) {
+      return true; 
+    }
+    else {
+      return false;
+    }
+  };
 
+  addMyState = (stateName, numVotes) => {
+    if (this.state.votesToAdd.includes(stateName) === false) {
+      const updatedVotesToAdd = [...this.state.votesToAdd, stateName];
+      const newNumVotes = this.state.totalVotes + numVotes;
+      this.setState({
+        votesToAdd: updatedVotesToAdd,
+        totalVotes: newNumVotes,
+      });
+      console.log(updatedVotesToAdd);
+      console.log(newNumVotes);
+      console.log(this.state.totalVotes);
+      // console.log(event);
+    }
+    
   }
+
+  removeMyState = (stateName, numVotes) => {
+    if (this.state.votesToAdd.includes(stateName)) {
+      const updatedVotesToAdd = this.state.votesToAdd.filter((item) => item !== stateName);
+      const newNumVotes = this.state.totalVotes - numVotes;
+      this.setState({
+        votesToAdd: updatedVotesToAdd,
+        totalVotes: newNumVotes,
+      });
+      console.log(updatedVotesToAdd);
+      console.log(this.state.votesToAdd)
+    }
+  }
+
+  // countVotesHelper = stateUS => {
+  //   return stateUS.numVotes;
+  // }
+
+  // countVotes = () => {
+  //   const aggregateMyStates = this.props.list.filter(this.aggregatorFilter).map(this.countVotesHelper);
+  //   console.log(aggregateMyStates);
+  //   const updatedVotes = this.state
+  //   // let counter = 0;
+  //   // for(let i = 0; i < this.state.numStates; i++) {
+  //   //   counter = counter + {aggregateMyStates[i].numVotes}    
+  //   // }
+
+  // }
   
   // sortListHighestFirst = item => {
     
@@ -233,7 +287,10 @@ class FilteredList extends Component {
               <Row>
                 <h1>Vote Counter</h1>
               </Row>
-              <p>Aggregator here</p>
+              <Row>
+              <DisplayAggregator list={this.props.list.filter(this.aggregatorFilter)}
+                removeMyState={this.removeMyState} />
+              </Row>
             </Col>
   
             {/* <Col style={{backgroundColor: "purple"}}>

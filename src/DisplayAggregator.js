@@ -6,13 +6,13 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
-class DisplayList extends Component {
+class DisplayAggregator extends Component {
 
   constructor() {
     super();
   }
 
-  createStateCard = stateUS => {
+  createStateCardCount = stateUS => {
     return (
       // <Container fluid>
       //   <Row>
@@ -42,7 +42,7 @@ class DisplayList extends Component {
             <ListGroup.Item>Political Leaning: {stateUS.color}</ListGroup.Item>
             <ListGroup.Item>Region: {stateUS.region} </ListGroup.Item>
             <br></br>
-            <Button variant="info" onClick={() => this.props.addMyState(stateUS.name, stateUS.numVotes)}>Add to Vote Counter</Button>
+            <Button variant="danger" onClick={() => this.props.removeMyState(stateUS.name, stateUS.numVotes)}>Remove from Vote Counter</Button>
           </Card.Body>
         </Card>
       </Col>
@@ -51,7 +51,7 @@ class DisplayList extends Component {
 
 
   render() {
-    const myList = this.props.list.map(this.createStateCard);
+    const myList = this.props.list.map(this.createStateCardCount);
 
 
     return (
@@ -73,4 +73,4 @@ class DisplayList extends Component {
 
 }
 
-export default DisplayList;
+export default DisplayAggregator;
