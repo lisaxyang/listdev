@@ -2,6 +2,9 @@ import React, {Component} from 'react';
 import Card from 'react-bootstrap/Card'
 import ListGroup from 'react-bootstrap/ListGroup'
 import Button from 'react-bootstrap/Button'
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 
 class DisplayList extends Component {
 
@@ -9,36 +12,48 @@ class DisplayList extends Component {
     super();
   }
 
-  createStateCard = item => {
+  createStateCard = stateUS => {
     return (
-      <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src="holder.js/100px180" />
-        <Card.Body>
-          <Card.Title>Card Title</Card.Title>
-          <Card.Text>
-            Some quick example text to build on the card title and make up the bulk of
-            the card's content.
-          </Card.Text>
-          <ListGroup.Item>Cras justo odio</ListGroup.Item>
-          <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
-          <Button variant="primary">Add to Vote Counter</Button>
-        </Card.Body>
-      </Card>
+      // <Container fluid>
+      //   <Row>
+      //     <Col>
+            <Card bg="light" style={{ width: '18rem' }}>
+              <Card.Header><b>{stateUS.numVotes}</b> electoral votes</Card.Header>
+              <Card.Body>
+              <Card.Title>{stateUS.name}</Card.Title>
+              <Card.Img variant="top" src={stateUS.img} />
+              
+                
+                <br></br><br></br>
+                {/* <Card.Text>
+                  This state has <b>{stateUS.numVotes}</b> electoral votes.
+                </Card.Text> */}
+                <ListGroup.Item>Political Leaning: {stateUS.color}</ListGroup.Item>
+                <ListGroup.Item>Region: {stateUS.region} </ListGroup.Item>
+                <br></br>
+                <Button variant="info">Add to Vote Counter</Button>
+              </Card.Body>
+            </Card>
     );
   };
 
 
   render() {
+    const myList = this.props.list.map(this.createStateCard);
+
+
     return (
       <div>
-        <div>
+        {/* <div>
           {this.props.list.map(item => 
             <li>{item.name}, {item.numVotes}, {item.color}, {item.region}</li> ) }
-        </div>
+        </div> */}
 
-        <div>
-            
-        </div>
+        <Container fluid>
+            <Row>
+              <Col>{myList}</Col>
+            </Row>
+        </Container>
 
       </div>
     )

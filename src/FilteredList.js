@@ -43,6 +43,7 @@ class FilteredList extends Component {
       return true;
     } else if (this.state.color === item.color) {
       if(this.state.region === "All") { 
+        console.log("hello");
         return true;
       } else if (this.state.region === item.region) {
         return true;
@@ -98,7 +99,7 @@ class FilteredList extends Component {
         })
     }
     else {
-      console.log(this.state.sortCondition);
+      // console.log(this.state.sortCondition);
       return this.props.list.sort(function(a, b) {
           var stateA = a.name.toUpperCase(); // ignore upper and lowercase
           var stateB = b.name.toUpperCase(); // ignore upper and lowercase
@@ -210,9 +211,7 @@ class FilteredList extends Component {
               </Row>
 
               <Row>
-              <DisplayList list={this.sortList(this.props.list.filter(this.matchesFilterColorRegion))} />
-                {/* <DisplayList list={this.state.sortedList.filter(this.matchesFilterColorRegion).sort(function(a, b) {
-                  return a.numVotes - b.numVotes;} ) } /> */}
+              <DisplayList list={this.sortList(this.props.list).filter(this.matchesFilterColorRegion)} />
               </Row>
             </Col>
   
