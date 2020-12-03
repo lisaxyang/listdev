@@ -6,7 +6,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import DisplayList from "./DisplayList";
 import DisplayAggregator from "./DisplayAggregator";
-import Card from 'react-bootstrap/Card'
+import DisplayOptions from "./DisplayOptions";
 
 class FilteredList extends Component {
 
@@ -154,8 +154,26 @@ class FilteredList extends Component {
 
           <Row>
             <Col md lg="8" style={{backgroundColor: "green"}}>
-              
+
               <Row style={{backgroundColor: "grey"}}>
+                <DisplayOptions navs={["All", "Blue", "Red", "Swing"]}
+                  whenSelected={this.onSelectFilterColor} 
+                  default="All"/>
+              </Row>
+
+              <Row style={{backgroundColor: "grey"}}>
+                <DisplayOptions navs={["All", "Midwest", "Northeast", "South", "West"]}
+                  whenSelected={this.onSelectFilterRegion} 
+                  default="All"/>
+              </Row>
+
+              <Row style={{backgroundColor: "grey"}}>
+                <DisplayOptions navs={["Original", "Descending", "Ascending"]}
+                  whenSelected={this.onSelectSort} 
+                  default="Original"/>
+              </Row>
+              
+              {/* <Row style={{backgroundColor: "grey"}}>
                 <Nav variant="tabs" defaultActiveKey="All">
                   <Nav.Item>
                     <Nav.Link eventKey="All" onSelect={this.onSelectFilterColor}>All</Nav.Link>
@@ -204,7 +222,7 @@ class FilteredList extends Component {
                     <Nav.Link eventKey="Ascending" onSelect={this.onSelectSort}>Lowest Votes First</Nav.Link>
                   </Nav.Item>
                 </Nav>
-              </Row>
+              </Row> */}
 
               <Row>
               <DisplayList list={this.sortList(this.props.list).filter(this.matchesFilterColorRegion)}

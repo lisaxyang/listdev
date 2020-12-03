@@ -14,24 +14,6 @@ class DisplayAggregator extends Component {
 
   createStateCardCount = stateUS => {
     return (
-      // <Container fluid>
-      //   <Row>
-      //     <Col>
-      //       <Card bg="light" style={{ width: '18rem' }}>
-      //         <Card.Header><b>{stateUS.numVotes}</b> electoral votes</Card.Header>
-      //         <Card.Body>
-      //         <Card.Title>{stateUS.name}</Card.Title>
-      //         <Card.Img variant="top" src={stateUS.img} />               
-      //           <br></br><br></br>
-      //           <ListGroup.Item>Political Leaning: {stateUS.color}</ListGroup.Item>
-      //           <ListGroup.Item>Region: {stateUS.region} </ListGroup.Item>
-      //           <br></br>
-      //           <Button variant="info">Add to Vote Counter</Button>
-      //         </Card.Body>
-      //       </Card>
-      //     </Col>
-      //   </Row>
-      // </Container>
       <Col key={stateUS.name}>
         <Card bg="light" style={{ width: '17rem', margin: '1rem 1rem 1rem 1rem' }}>
           <Card.Header><b>{stateUS.numVotes}</b> electoral votes</Card.Header>
