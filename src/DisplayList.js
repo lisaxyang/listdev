@@ -14,9 +14,9 @@ class DisplayList extends Component {
 
   createStateCard = stateUS => {
     return (
-      // <Container fluid>
-      //   <Row>
-      //     <Col>
+      <Container fluid>
+        <Row>
+          <Col>
             <Card bg="light" style={{ width: '18rem' }}>
               <Card.Header><b>{stateUS.numVotes}</b> electoral votes</Card.Header>
               <Card.Body>
@@ -34,6 +34,9 @@ class DisplayList extends Component {
                 <Button variant="info">Add to Vote Counter</Button>
               </Card.Body>
             </Card>
+          </Col>
+        </Row>
+      </Container>
     );
   };
 
@@ -49,11 +52,9 @@ class DisplayList extends Component {
             <li>{item.name}, {item.numVotes}, {item.color}, {item.region}</li> ) }
         </div> */}
 
-        <Container fluid>
-            <Row>
-              <Col>{myList}</Col>
-            </Row>
-        </Container>
+        <div>
+            {myList}
+        </div>
 
       </div>
     )
