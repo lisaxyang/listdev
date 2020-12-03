@@ -15,10 +15,9 @@ class FilteredList extends Component {
     this.state = { 
       color: "All",
       region: "All",
-      sortCondition: "None",
+      sortCondition: "Original",
       votesToAdd: [],
       totalVotes: 0,
-      numStates: 0,
       // sortedList: this.props.list,
     };
   }
@@ -216,18 +215,20 @@ class FilteredList extends Component {
               
 
               <Row style={{backgroundColor: "pink"}}>
-                <Nav.Item>
-                  <Nav.Link eventKey="All" onSelect={this.onSelectFilterColor}>All</Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                <Nav.Link eventKey="Blue" onSelect={this.onSelectFilterColor}>Blue</Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                  <Nav.Link eventKey="Red" onSelect={this.onSelectFilterColor}>Red</Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                  <Nav.Link eventKey="Swing" onSelect={this.onSelectFilterColor}>Swing</Nav.Link>
-                </Nav.Item>
+                <Nav variant="tabs" defaultActiveKey="All">
+                  <Nav.Item>
+                    <Nav.Link eventKey="All" onSelect={this.onSelectFilterColor}>All</Nav.Link>
+                  </Nav.Item>
+                  <Nav.Item>
+                  <Nav.Link eventKey="Blue" onSelect={this.onSelectFilterColor}>Blue</Nav.Link>
+                  </Nav.Item>
+                  <Nav.Item>
+                    <Nav.Link eventKey="Red" onSelect={this.onSelectFilterColor}>Red</Nav.Link>
+                  </Nav.Item>
+                  <Nav.Item>
+                    <Nav.Link eventKey="Swing" onSelect={this.onSelectFilterColor}>Swing</Nav.Link>
+                  </Nav.Item>
+                </Nav>
               </Row>
               {/* <Row style={{backgroundColor: "pink"}}>
                 <Nav.Item>
@@ -246,35 +247,39 @@ class FilteredList extends Component {
                   <Nav.Link eventKey="West" onSelect={this.onSelectFilterColor}>West</Nav.Link>
                 </Nav.Item>
               </Row> */}
-      
+              
               <Row style={{backgroundColor: "pink"}}>
-                <Nav.Item>
-                  <Nav.Link eventKey="All" onSelect={this.onSelectFilterRegion}>All</Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                <Nav.Link eventKey="Midwest" onSelect={this.onSelectFilterRegion}>Midwest</Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                  <Nav.Link eventKey="Northeast" onSelect={this.onSelectFilterRegion}>Northeast</Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                  <Nav.Link eventKey="South" onSelect={this.onSelectFilterRegion}>South</Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                  <Nav.Link eventKey="West" onSelect={this.onSelectFilterRegion}>West</Nav.Link>
-                </Nav.Item>
+                <Nav variant="tabs" defaultActiveKey="All">
+                  <Nav.Item>
+                    <Nav.Link eventKey="All" onSelect={this.onSelectFilterRegion}>All</Nav.Link>
+                  </Nav.Item>
+                  <Nav.Item>
+                  <Nav.Link eventKey="Midwest" onSelect={this.onSelectFilterRegion}>Midwest</Nav.Link>
+                  </Nav.Item>
+                  <Nav.Item>
+                    <Nav.Link eventKey="Northeast" onSelect={this.onSelectFilterRegion}>Northeast</Nav.Link>
+                  </Nav.Item>
+                  <Nav.Item>
+                    <Nav.Link eventKey="South" onSelect={this.onSelectFilterRegion}>South</Nav.Link>
+                  </Nav.Item>
+                  <Nav.Item>
+                    <Nav.Link eventKey="West" onSelect={this.onSelectFilterRegion}>West</Nav.Link>
+                  </Nav.Item>
+                </Nav>
               </Row>
 
               <Row style={{backgroundColor: "honeydew"}}>
-                <Nav.Item>
-                  <Nav.Link eventKey="None" onSelect={this.onSelectSort}>Original</Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                <Nav.Link eventKey="Descending" onSelect={this.onSelectSort}>Highest Votes First</Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                  <Nav.Link eventKey="Ascending" onSelect={this.onSelectSort}>Lowest Votes First</Nav.Link>
-                </Nav.Item>
+                <Nav variant="tabs" defaultActiveKey="Original">
+                  <Nav.Item>
+                    <Nav.Link eventKey="Original" onSelect={this.onSelectSort}>Original</Nav.Link>
+                  </Nav.Item>
+                  <Nav.Item>
+                  <Nav.Link eventKey="Descending" onSelect={this.onSelectSort}>Highest Votes First</Nav.Link>
+                  </Nav.Item>
+                  <Nav.Item>
+                    <Nav.Link eventKey="Ascending" onSelect={this.onSelectSort}>Lowest Votes First</Nav.Link>
+                  </Nav.Item>
+                </Nav>
               </Row>
 
               <Row>
@@ -286,6 +291,7 @@ class FilteredList extends Component {
             <Col style={{backgroundColor: "yellow"}}>
               <Row>
                 <h1>Vote Counter</h1>
+                <h3>You have <b>{this.state.totalVotes}</b> electoral votes</h3>
               </Row>
               <Row>
               <DisplayAggregator list={this.props.list.filter(this.aggregatorFilter)}
