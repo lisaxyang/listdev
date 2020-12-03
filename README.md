@@ -14,6 +14,9 @@ button is clicked.
 Passes an aggregate list of states chosen by the user into DisplayAggregator,
 along with a remove US State function to remove it from the aggregator
 if the button is clicked.
+Passes a list of nav items to the DisplayOptions along with a function
+to call when a nav item is selected from the list. Also passes in the default
+for the nav tab group.
 
 -DisplayList - displays the filtered and sorted list in the display, 
 and the user list in the Vote Counter. Receives a filtered and sorted
@@ -26,6 +29,11 @@ Receives a list of states the user clicked on and a function to call to
 remove a state from the aggregator.
 When this function is called, it passes in the state that the user clicked
 on and the number of electoral votes it has.
+
+-DisplayOptions - displays the filter and sort options.
+Creates a NavTab with the list of navs passed in.
+Sets the onSelect function to the passed in whenSelected function.
+Sets the default of the tabs to the passed in default.
 
 
 How the user triggers state changes:
