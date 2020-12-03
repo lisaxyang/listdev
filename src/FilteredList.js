@@ -6,7 +6,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import DisplayList from "./DisplayList";
 import DisplayAggregator from "./DisplayAggregator";
-import Jumbotron from 'react-bootstrap/Jumbotron'
+import Card from 'react-bootstrap/Card'
 
 class FilteredList extends Component {
 
@@ -18,7 +18,6 @@ class FilteredList extends Component {
       sortCondition: "Original",
       votesToAdd: [],
       totalVotes: 0,
-      // sortedList: this.props.list,
     };
   }
 
@@ -65,31 +64,8 @@ class FilteredList extends Component {
     this.setState({
       sortCondition: event
     })
-    // this.sortList();
   };
 
-
-  // sortList = () => {
-  //   if (this.state.sortCondition === "Ascending") {
-  //     this.setState({
-  //       sortedList: this.props.list.sort(function(a, b) {
-  //         return a.numVotes - b.numVotes;
-  //       })
-  //     })
-  //   } 
-  //   else if (this.state.sortCondition === "Descending") {
-  //     this.setState({
-  //       sortedList: this.props.list.sort(function(a, b) {
-  //         return b.numVotes - a.numVotes;
-  //       })
-  //     })
-  //   }
-  //   else {
-  //     this.setState({
-  //       sortedList: this.props.list,
-  //     })
-  //   }
-  // };
 
   sortList = unsortedList => {
     if (this.state.sortCondition === "Ascending") {
@@ -158,40 +134,6 @@ class FilteredList extends Component {
       console.log(this.state.votesToAdd)
     }
   }
-
-  // countVotesHelper = stateUS => {
-  //   return stateUS.numVotes;
-  // }
-
-  // countVotes = () => {
-  //   const aggregateMyStates = this.props.list.filter(this.aggregatorFilter).map(this.countVotesHelper);
-  //   console.log(aggregateMyStates);
-  //   const updatedVotes = this.state
-  //   // let counter = 0;
-  //   // for(let i = 0; i < this.state.numStates; i++) {
-  //   //   counter = counter + {aggregateMyStates[i].numVotes}    
-  //   // }
-
-  // }
-  
-  // sortListHighestFirst = item => {
-    
-  // }
-  
-  // sortListLowestFirst = item => {
-    
-  // }
-
-  // matchesFilterRegion = item => {
-  //   // all items should be shown when no filter is selected
-  //   if(this.state.region === "All") { 
-  //     return true;
-  //   } else if (this.state.region === item.region) {
-  //     return true;
-  //   } else {
-  //     return false;
-  //   }
-  // }
   
 
   render() {
@@ -213,8 +155,7 @@ class FilteredList extends Component {
           <Row>
             <Col md lg="8" style={{backgroundColor: "green"}}>
               
-
-              <Row style={{backgroundColor: "pink"}}>
+              <Row style={{backgroundColor: "grey"}}>
                 <Nav variant="tabs" defaultActiveKey="All">
                   <Nav.Item>
                     <Nav.Link eventKey="All" onSelect={this.onSelectFilterColor}>All</Nav.Link>
@@ -230,24 +171,7 @@ class FilteredList extends Component {
                   </Nav.Item>
                 </Nav>
               </Row>
-              {/* <Row style={{backgroundColor: "pink"}}>
-                <Nav.Item>
-                  <Nav.Link eventKey="All" onSelect={this.onSelectFilterColor}>All</Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                <Nav.Link eventKey="Midwest" onSelect={this.onSelectFilterColor}>Midwest</Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                  <Nav.Link eventKey="Northeast" onSelect={this.onSelectFilterColor}>Northeast</Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                  <Nav.Link eventKey="South" onSelect={this.onSelectFilterColor}>South</Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                  <Nav.Link eventKey="West" onSelect={this.onSelectFilterColor}>West</Nav.Link>
-                </Nav.Item>
-              </Row> */}
-              
+
               <Row style={{backgroundColor: "pink"}}>
                 <Nav variant="tabs" defaultActiveKey="All">
                   <Nav.Item>
@@ -291,7 +215,7 @@ class FilteredList extends Component {
             <Col style={{backgroundColor: "yellow"}}>
               <Row>
                 <h1>Vote Counter</h1>
-                <h3>You have <b>{this.state.totalVotes}</b> electoral votes</h3>
+                <h3>You have <b style={{color: "green"}}>{this.state.totalVotes}</b> electoral votes</h3>
               </Row>
               <Row>
               <DisplayAggregator list={this.props.list.filter(this.aggregatorFilter)}
