@@ -6,8 +6,14 @@ into FilteredList.
 
 -FilteredList - contains all the methods for filtering, sorting, and 
 keeping track of the total number of votes in the Vote Counter.
-Passes a filtered and sorted list into DisplayList, along with add and remove
-US State functions in order to add a State to the aggregator. 
+Also controls the display of other components in the app and holds the
+flexbox Container.
+Passes a filtered and sorted list into DisplayList, along with an add
+US State function in order to add a State to the aggregator if the 
+button is clicked. 
+Passes an aggregate list of states chosen by the user into DisplayAggregator,
+along with a remove US State function to remove it from the aggregator
+if the button is clicked.
 
 -DisplayList - displays the filtered and sorted list in the display, 
 and the user list in the Vote Counter. Receives a filtered and sorted
