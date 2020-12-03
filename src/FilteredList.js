@@ -147,7 +147,7 @@ class FilteredList extends Component {
         <link rel="stylesheet" href="onlinebootstrap.css"></link>
         <Container fluid style={{backgroundColor: "grey"}}>
           <Row>
-            <Col md lg="7" style={{backgroundColor: "green"}}>
+            <Col md lg="8" style={{backgroundColor: "green"}}>
               <Row style={{backgroundColor: "pink"}}>
                 <Nav.Item>
                   <Nav.Link eventKey="All" onSelect={this.onSelectFilterColor}>All</Nav.Link>

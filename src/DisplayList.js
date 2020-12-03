@@ -33,7 +33,7 @@ class DisplayList extends Component {
       //   </Row>
       // </Container>
       <Col>
-        <Card bg="light" style={{ width: '18rem' }}>
+        <Card bg="light" style={{ width: '17rem', margin: '1rem 1rem 1rem 1rem' }}>
           <Card.Header><b>{stateUS.numVotes}</b> electoral votes</Card.Header>
           <Card.Body>
           <Card.Title>{stateUS.name}</Card.Title>
@@ -62,7 +62,9 @@ class DisplayList extends Component {
         </div> */}
 
         <Container fluid>
-            <Row>{myList}</Row>
+            <Row style={{alignItems: "center"}}>
+              {myList}
+            </Row>
         </Container>
 
       </div>
