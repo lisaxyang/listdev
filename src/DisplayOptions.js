@@ -4,66 +4,12 @@ import Nav from 'react-bootstrap/Nav'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import DisplayList from "./DisplayList";
-import Jumbotron from 'react-bootstrap/Jumbotron'
 
-class FilteredList extends Component {
+class DisplayOptions extends Component {
 
   constructor() {
     super();
-    this.state = { 
-      color: "All",
-      region: "All",
-      sortCondition: "None",
-      // sortedList: this.props.list,
-    };
   }
-
-  onSelectFilterColor = event => {
-    this.setState({
-      color: event
-    })
-  };
-
-  onSelectFilterRegion = event => {
-    this.setState({
-      region: event
-    })
-  }; 
-
-  matchesFilterColorRegion = item => {
-    // all items should be shown when no filter is selected
-    if(this.state.color === "All") { 
-      if(this.state.region === "All") { 
-        return true;
-      } else if (this.state.region === item.region) {
-        return true;
-      } else {
-        return false;
-      }
-      return true;
-    } else if (this.state.color === item.color) {
-      if(this.state.region === "All") { 
-        console.log("hello");
-        return true;
-      } else if (this.state.region === item.region) {
-        return true;
-      } else {
-        return false;
-      }
-      return true;
-    } else {
-      return false;
-    }
-  };
-
-
-  onSelectSort = event => {
-    this.setState({
-      sortCondition: event
-    })
-    // this.sortList();
-  };
 
 
   // sortList = () => {
@@ -88,20 +34,20 @@ class FilteredList extends Component {
   //   }
   // };
 
-  sortList = unsortedList => {
+  sortList = list => {
     if (this.state.sortCondition === "Ascending") {
-      return unsortedList.sort(function(a, b) {
+      return this.props.list.sort(function(a, b) {
           return a.numVotes - b.numVotes;
         })
     } 
     else if (this.state.sortCondition === "Descending") {
-      return unsortedList.sort(function(a, b) {
+      return this.props.list.sort(function(a, b) {
           return b.numVotes - a.numVotes;
         })
     }
     else {
       // console.log(this.state.sortCondition);
-      return unsortedList.sort(function(a, b) {
+      return this.props.list.sort(function(a, b) {
           var stateA = a.name.toUpperCase(); // ignore upper and lowercase
           var stateB = b.name.toUpperCase(); // ignore upper and lowercase
           if (stateA < stateB) {
@@ -116,10 +62,6 @@ class FilteredList extends Component {
         })
     }
   };
-
-  addMyState = item => {
-
-  }
   
   // sortListHighestFirst = item => {
     
@@ -224,8 +166,7 @@ class FilteredList extends Component {
               </Row>
 
               <Row>
-              <DisplayList list={this.sortList(this.props.list).filter(this.matchesFilterColorRegion)}
-                addMyState={this.addMyState} />
+              <DisplayList list={this.sortList(this.props.list).filter(this.matchesFilterColorRegion)} />
               </Row>
             </Col>
   
@@ -235,14 +176,7 @@ class FilteredList extends Component {
               </Row>
               <p>Aggregator here</p>
             </Col>
-  
-            {/* <Col style={{backgroundColor: "purple"}}>
-              <p>hello</p>
-            </Col>
-  
-            <Col style={{backgroundColor: "lavender"}}>
-              <p>sad</p>
-            </Col> */} 
+
           </Row>
 
         </Container>
@@ -252,4 +186,4 @@ class FilteredList extends Component {
 
 }
   
-export default FilteredList;
+export default DisplayOptions;
