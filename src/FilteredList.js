@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 
-import Nav from 'react-bootstrap/Nav'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import DisplayList from "./DisplayList";
 import DisplayAggregator from "./DisplayAggregator";
 import DisplayOptions from "./DisplayOptions";
+import "./style.css"
 
 class FilteredList extends Component {
 
@@ -172,62 +172,12 @@ class FilteredList extends Component {
                   whenSelected={this.onSelectSort} 
                   default="Original"/>
               </Row>
-              
-              {/* <Row style={{backgroundColor: "grey"}}>
-                <Nav variant="tabs" defaultActiveKey="All">
-                  <Nav.Item>
-                    <Nav.Link eventKey="All" onSelect={this.onSelectFilterColor}>All</Nav.Link>
-                  </Nav.Item>
-                  <Nav.Item>
-                  <Nav.Link eventKey="Blue" onSelect={this.onSelectFilterColor}>Blue</Nav.Link>
-                  </Nav.Item>
-                  <Nav.Item>
-                    <Nav.Link eventKey="Red" onSelect={this.onSelectFilterColor}>Red</Nav.Link>
-                  </Nav.Item>
-                  <Nav.Item>
-                    <Nav.Link eventKey="Swing" onSelect={this.onSelectFilterColor}>Swing</Nav.Link>
-                  </Nav.Item>
-                </Nav>
-              </Row>
-
-              <Row style={{backgroundColor: "pink"}}>
-                <Nav variant="tabs" defaultActiveKey="All">
-                  <Nav.Item>
-                    <Nav.Link eventKey="All" onSelect={this.onSelectFilterRegion}>All</Nav.Link>
-                  </Nav.Item>
-                  <Nav.Item>
-                  <Nav.Link eventKey="Midwest" onSelect={this.onSelectFilterRegion}>Midwest</Nav.Link>
-                  </Nav.Item>
-                  <Nav.Item>
-                    <Nav.Link eventKey="Northeast" onSelect={this.onSelectFilterRegion}>Northeast</Nav.Link>
-                  </Nav.Item>
-                  <Nav.Item>
-                    <Nav.Link eventKey="South" onSelect={this.onSelectFilterRegion}>South</Nav.Link>
-                  </Nav.Item>
-                  <Nav.Item>
-                    <Nav.Link eventKey="West" onSelect={this.onSelectFilterRegion}>West</Nav.Link>
-                  </Nav.Item>
-                </Nav>
-              </Row>
-
-              <Row style={{backgroundColor: "honeydew"}}>
-                <Nav variant="tabs" defaultActiveKey="Original">
-                  <Nav.Item>
-                    <Nav.Link eventKey="Original" onSelect={this.onSelectSort}>Original</Nav.Link>
-                  </Nav.Item>
-                  <Nav.Item>
-                  <Nav.Link eventKey="Descending" onSelect={this.onSelectSort}>Highest Votes First</Nav.Link>
-                  </Nav.Item>
-                  <Nav.Item>
-                    <Nav.Link eventKey="Ascending" onSelect={this.onSelectSort}>Lowest Votes First</Nav.Link>
-                  </Nav.Item>
-                </Nav>
-              </Row> */}
-
+            
               <Row>
               <DisplayList list={this.sortList(this.props.list).filter(this.matchesFilterColorRegion)}
                 addMyState={this.addMyState} />
               </Row>
+              
             </Col>
   
             <Col style={{backgroundColor: "yellow"}}>
