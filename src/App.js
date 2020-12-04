@@ -5,6 +5,7 @@ import React, { Component } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import FilteredList from "./FilteredList";
 
+// List of 12 US States with votes, political leaning, region, and image
 const usStatesList = [
   { name: "Arizona", numVotes: 11, color: "Swing", region: "West", img: "https://www.colorincolorado.org/sites/default/files/styles/resource_thumbnail/public/arizona.png?itok=_7XuZABk"},
   { name: "California", numVotes: 55, color: "Blue", region: "West", img: "https://www.colorincolorado.org/sites/default/files/styles/resource_thumbnail/public/california.png?itok=eFjIL-5z"},
@@ -28,6 +29,7 @@ class App extends Component {
 
   render() {
     return (
+      // Passes in the list of US States
       <FilteredList list={usStatesList} />
     );
   }

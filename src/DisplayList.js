@@ -12,26 +12,10 @@ class DisplayList extends Component {
     super();
   }
 
+  // Creates a card for each US state
   createStateCard = stateUS => {
     return (
-      // <Container fluid>
-      //   <Row>
-      //     <Col>
-      //       <Card bg="light" style={{ width: '18rem' }}>
-      //         <Card.Header><b>{stateUS.numVotes}</b> electoral votes</Card.Header>
-      //         <Card.Body>
-      //         <Card.Title>{stateUS.name}</Card.Title>
-      //         <Card.Img variant="top" src={stateUS.img} />               
-      //           <br></br><br></br>
-      //           <ListGroup.Item>Political Leaning: {stateUS.color}</ListGroup.Item>
-      //           <ListGroup.Item>Region: {stateUS.region} </ListGroup.Item>
-      //           <br></br>
-      //           <Button variant="info">Add to Vote Counter</Button>
-      //         </Card.Body>
-      //       </Card>
-      //     </Col>
-      //   </Row>
-      // </Container>
+      // Returns each card in a column so it can be flex-wrapped
       <Col key={stateUS.name}>
         <Card bg="light" style={{ width: '17rem', margin: '1rem 1rem 1rem 1rem' }}>
           <Card.Header><b>{stateUS.numVotes}</b> electoral votes</Card.Header>
@@ -42,6 +26,7 @@ class DisplayList extends Component {
             <ListGroup.Item>Political Leaning: {stateUS.color}</ListGroup.Item>
             <ListGroup.Item>Region: {stateUS.region} </ListGroup.Item>
             <br></br>
+            {/* passes in two parameters to the onClick function when button is clicked */}
             <Button variant="info" onClick={() => this.props.addMyState(stateUS.name, stateUS.numVotes)}>Add to Vote Counter</Button>
           </Card.Body>
         </Card>
@@ -51,23 +36,15 @@ class DisplayList extends Component {
 
 
   render() {
+    // Creates a card for each US state using map function
     const myList = this.props.list.map(this.createStateCard);
-
-
     return (
-      <div>
-        {/* <div>
-          {this.props.list.map(item => 
-            <li>{item.name}, {item.numVotes}, {item.color}, {item.region}</li> ) }
-        </div> */}
-
-        <Container fluid>
-            <Row style={{alignItems: "center"}}>
-              {myList}
-            </Row>
-        </Container>
-
-      </div>
+      // Returns a flexbox container for the US State cards
+      <Container fluid>
+          <Row style={{alignItems: "center"}}>
+            {myList}
+          </Row>
+      </Container>
     )
   }
 

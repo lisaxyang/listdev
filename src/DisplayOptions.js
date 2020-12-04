@@ -8,17 +8,20 @@ class DisplayOptions extends Component {
     super();
   } 
 
+  // Creates a nav item for each filter/sort option
   createNavItem = navName => {
     return (
       <Nav.Item>
+        {/* sets the eventKey as the nav descriptor and onSelect function as passed in function */}
         <Nav.Link eventKey={navName} onSelect={this.props.whenSelected}>{navName}</Nav.Link>
       </Nav.Item>
     )
   }
 
   render() {
-    // var sortedList = this.props.list;
+    // Creates nav item for each filter/sort option
     const myNavs = this.props.navs.map(this.createNavItem);
+    // Returns all the nav items wrapped in tabbed nav format
     return (
       <Nav variant="tabs" defaultActiveKey={this.props.default}>
         {myNavs}
