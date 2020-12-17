@@ -23,7 +23,7 @@ class DisplayOptions extends Component {
     const myNavs = this.props.navs.map(this.createNavItem);
     // Returns all the nav items wrapped in tabbed nav format
     return (
-      <Nav variant="tabs" defaultActiveKey={this.props.default}>
+      <Nav variant="pills info" defaultActiveKey={this.props.default}>
         {myNavs}
       </Nav>
     )

@@ -75,12 +75,12 @@ class FilteredList extends Component {
 
   // Sorts list depending on the sort option selected, in state
   sortList = unsortedList => {
-    if (this.state.sortCondition === "Ascending") {
+    if (this.state.sortCondition === "Ascending Number of Votes") {
       return unsortedList.sort(function(a, b) {
           return a.numVotes - b.numVotes;
         })
     } 
-    else if (this.state.sortCondition === "Descending") {
+    else if (this.state.sortCondition === "Descending Number of Votes") {
       return unsortedList.sort(function(a, b) {
           return b.numVotes - a.numVotes;
         })
@@ -149,40 +149,47 @@ class FilteredList extends Component {
     return (
 
       // Bootstrap fluid container
-      <Container fluid style={{backgroundColor: "grey"}}>
+      <Container fluid>
         
         {/* Title */}
-        <Row>
+        <Row className='pagetitle'>
           <h1>US Electoral Vote Counter</h1>
         </Row>
+        {/* <hr></hr> */}
 
         {/* Displayed list and aggregator section*/}
         <Row>
 
           {/* Displayed list column */}
-          <Col md lg="8" style={{backgroundColor: "green"}}>
+          <Col md lg="8" className='statecards'>
 
             {/* Filter and Sort options */}
-            <Row style={{backgroundColor: "grey"}}>
+            <Row className='filters'>
+            <div class='selectregion'><h5>State Political Leaning:</h5></div>
               <DisplayOptions navs={["All", "Blue", "Red", "Swing"]}
                 whenSelected={this.onSelectFilterColor} 
                 default="All"/>
             </Row>
 
-            <Row style={{backgroundColor: "grey"}}>
-              <DisplayOptions navs={["All", "Midwest", "Northeast", "South", "West"]}
-                whenSelected={this.onSelectFilterRegion} 
-                default="All"/>
+            <Row className='filters'>
+              {/* <h6>Select Region:</h6> */}
+              <div class='selectregion'><h5>State Region:</h5></div>
+              <div>
+                <DisplayOptions navs={["All", "Midwest", "Northeast", "South", "West"]}
+                  whenSelected={this.onSelectFilterRegion} 
+                  default="All"/>
+              </div>
             </Row>
 
-            <Row style={{backgroundColor: "grey"}}>
-              <DisplayOptions navs={["Original", "Descending", "Ascending"]}
+            <Row className='filters'>
+            <div class='selectregion'><h5>State Sort Option:</h5></div>
+              <DisplayOptions navs={["Original", "Descending Number of Votes", "Ascending Number of Votes"]}
                 whenSelected={this.onSelectSort} 
                 default="Original"/>
             </Row>
           
             {/* Displayed list */}
-            <Row>
+            <Row className='filteredStates'>
             <DisplayList list={this.sortList(this.props.list).filter(this.matchesFilterColorRegion)}
               addMyState={this.addMyState} />
             </Row>
@@ -190,7 +197,7 @@ class FilteredList extends Component {
           </Col>
 
           {/* Aggregator column */}
-          <Col style={{backgroundColor: "yellow"}}>
+          <Col className='Aggregatorcol'>
             {/* Section title and aggregate votes */}
             <Row>
               <h1>Vote Counter</h1>

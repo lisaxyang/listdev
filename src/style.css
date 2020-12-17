@@ -1,3 +1,41 @@
 h1 {
-    color: red;
+    /* color: red; */
 }
+
+.pagetitle {
+    border-style: hidden hidden solid hidden;
+    padding: 1rem;
+    justify-content: center;
+    background-color: #bde6f2;
+}
+
+.filters {
+    padding-left: 2rem;
+    padding-top: 1rem;
+    /* padding-bottom: 1rem; */
+    align-content: center;
+    /* justify-content: center; */
+    /* background-color: #feffff; */
+}
+
+.filteredStates {
+    /* background-color: aquamarine; */
+}
+
+.Aggregatorcol {
+    border: black;
+    border-style: hidden double hidden double;
+    padding-top: 1rem;
+    padding-left: 2rem;
+    background-color: #eef8fc;
+}
+
+
+.selectregion {
+    padding-top: 0.5rem;
+    padding-right: 1rem;
+}
+
+/* .dynamicAggregates {
+    background-color: aquamarine;
+} */
