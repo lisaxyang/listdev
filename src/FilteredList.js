@@ -15,7 +15,7 @@ class FilteredList extends Component {
     this.state = { 
       color: "All", //political leaning
       region: "All",
-      sortCondition: "Original", //originally alphabetical
+      sortCondition: "Alphabetical", //originally alphabetical
       votesToAdd: [], // lists of US States to add to aggregator
       totalVotes: 0, // total number of electoral votes in aggregator
     };
@@ -165,7 +165,7 @@ class FilteredList extends Component {
 
             {/* Filter and Sort options */}
             <Row className='filters'>
-            <div class='selectregion'><h5>State Political Leaning:</h5></div>
+            <div class='selectregion'><h5>State's Political Leaning:</h5></div>
               <DisplayOptions navs={["All", "Blue", "Red", "Swing"]}
                 whenSelected={this.onSelectFilterColor} 
                 default="All"/>
@@ -173,7 +173,7 @@ class FilteredList extends Component {
 
             <Row className='filters'>
               {/* <h6>Select Region:</h6> */}
-              <div class='selectregion'><h5>State Region:</h5></div>
+              <div class='selectregion'><h5>State's Region:</h5></div>
               <div>
                 <DisplayOptions navs={["All", "Midwest", "Northeast", "South", "West"]}
                   whenSelected={this.onSelectFilterRegion} 
@@ -182,10 +182,10 @@ class FilteredList extends Component {
             </Row>
 
             <Row className='filters'>
-            <div class='selectregion'><h5>State Sort Option:</h5></div>
-              <DisplayOptions navs={["Original", "Descending Number of Votes", "Ascending Number of Votes"]}
+            <div class='selectregion'><h5>Sort Options:</h5></div>
+              <DisplayOptions navs={["Alphabetical", "Descending Number of Votes", "Ascending Number of Votes"]}
                 whenSelected={this.onSelectSort} 
-                default="Original"/>
+                default="Alphabetical"/>
             </Row>
           
             {/* Displayed list */}
